@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // output: 'export',
   distDir: 'out',
   images: {
-    unoptimized: true
+    unoptimized: true,
+    domains: [
+      "avatars.githubusercontent.com",
+      "lh3.googleusercontent.com",
+    ]
   },
   reactStrictMode: true,
   webpack: (config, { nextRuntime }) => {
@@ -18,6 +22,9 @@ const nextConfig = {
     config.externals.push("pino-pretty", "lokijs", "encoding");
     return config;
   },
+  experimental: {
+    appDir: true
+  }
 };
 
 module.exports = nextConfig;
