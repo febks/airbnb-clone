@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // output: 'export',
-  distDir: 'out',
+  // distDir: 'out',
   images: {
     unoptimized: true,
     domains: [
@@ -9,19 +9,19 @@ const nextConfig = {
       "lh3.googleusercontent.com",
     ]
   },
-  reactStrictMode: true,
-  webpack: (config, { nextRuntime }) => {
-    if (typeof nextRuntime === "undefined") {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        tls: false,
-      };
-    }
-    config.externals.push("pino-pretty", "lokijs", "encoding");
-    return config;
-  },
+  // reactStrictMode: true,
+  // webpack: (config, { nextRuntime }) => {
+  //   if (typeof nextRuntime === "undefined") {
+  //     config.resolve.fallback = {
+  //       ...config.resolve.fallback,
+  //       fs: false,
+  //       net: false,
+  //       tls: false,
+  //     };
+  //   }
+  //   config.externals.push("pino-pretty", "lokijs", "encoding");
+  //   return config;
+  // },
   experimental: {
     appDir: true
   }
