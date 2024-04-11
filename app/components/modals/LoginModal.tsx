@@ -21,8 +21,10 @@ import { useRouter } from 'next/navigation';
 
 const LoginModal = () => {
   const router = useRouter();
+
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -59,6 +61,11 @@ const LoginModal = () => {
       }
     })
   }
+
+  const toggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal])
 
   const bodyContent = (
     <div className='flex flex-col gap-4'>
@@ -103,8 +110,8 @@ const LoginModal = () => {
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center gap-2">
-          <div>Already have an account?</div>
-          <div className="text-neutral-800 cursor-pointer hover:underline" onClick={registerModal.onClose}>Log in</div>
+          <div>First time using Airbnb?</div>
+          <div className="text-neutral-800 cursor-pointer hover:underline" onClick={toggle}>Create an account</div>
         </div>
       </div>
     </div>
